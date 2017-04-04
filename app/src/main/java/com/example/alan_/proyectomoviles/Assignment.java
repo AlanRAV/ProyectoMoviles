@@ -12,7 +12,8 @@ public class Assignment {
    // public String key;
     public String assignmentName;
     public String assignmentGrade;
-    public String assignmentDueDate;
+    public Long assignmentTimeMil;
+    public String assignmentDate;
 
 
     // Default constructor required for calls to
@@ -20,9 +21,10 @@ public class Assignment {
     public Assignment() {
     }
 
-    public Assignment(String assignmentName, String assignmentGrade, String assignmentDueDate) {
+    public Assignment(String assignmentName, String assignmentGrade, Long assignmentTimeMil, String assignmentDate) {
         this.assignmentName = assignmentName;
         this.assignmentGrade = assignmentGrade;
-        this.assignmentDueDate = assignmentDueDate;
+        this.assignmentTimeMil = assignmentTimeMil;
+        this.assignmentDate = assignmentDate;
     }
 }

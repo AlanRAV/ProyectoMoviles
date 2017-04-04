@@ -90,13 +90,14 @@ public class AssignmentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String assignmentName = inputAssName.getText().toString();
                 String assignmentGrade = inputAssGrade.getText().toString();
-                String assignmentDate = inputAssDate.getText().toString();
+                long assignmentTimeMil = 0;
+                String assignmentDate = null;
 
                 // Check for already existed userId
                 if (TextUtils.isEmpty(assignmentId)) {
-                    createAssignment(assignmentName, assignmentGrade, assignmentDate);
+                    createAssignment(assignmentName, assignmentGrade, assignmentTimeMil, assignmentDate );
                 } else {
-                    updateAssignment(assignmentName, assignmentGrade, assignmentDate);
+                    updateAssignment(assignmentName, assignmentGrade, assignmentTimeMil, assignmentDate);
                 }
             }
         });
@@ -142,7 +143,7 @@ public class AssignmentActivity extends AppCompatActivity {
         addCourseChangeListener();
     }
 */
-    private void createAssignment(String assignmentName, String assignmentGrade, String assignmentDueDate) {
+    private void createAssignment(String assignmentName, String assignmentGrade, long assignmentTimeMil, String assignmentDate) {
         // TODO
         // In real apps this userId should be fetched
         // by implementing firebase auth
@@ -150,7 +151,7 @@ public class AssignmentActivity extends AppCompatActivity {
             assignmentId = mFirebaseDatabase.push().getKey();
         }
 
-        Assignment assignment = new Assignment(assignmentName, assignmentGrade, assignmentDueDate);
+        Assignment assignment = new Assignment(assignmentName, assignmentGrade, assignmentTimeMil, assignmentDate);
 
         mFirebaseDatabase.child(assignmentId).setValue(assignment);
 
@@ -173,10 +174,10 @@ public class AssignmentActivity extends AppCompatActivity {
                     return;
                 }
 
-                Log.e(TAG, "Assignment data is changed!" + assignment.assignmentName + ", " + assignment.assignmentGrade + ", " + assignment.assignmentDueDate);
+                Log.e(TAG, "Assignment data is changed!" + assignment.assignmentName + ", " + assignment.assignmentGrade + ", "+ assignment.assignmentTimeMil+ ", " + assignment.assignmentDate);
 
                 // Display newly updated name and email
-                assDetails.setText(assignment.assignmentName + ", " + assignment.assignmentGrade + ", " + assignment.assignmentDueDate);
+                assDetails.setText(assignment.assignmentName + ", " + assignment.assignmentGrade + ", " +assignment.assignmentTimeMil+ ", " + assignment.assignmentDate);
 
                 // clear edit text
                 inputAssName.setText("");
@@ -195,7 +196,7 @@ public class AssignmentActivity extends AppCompatActivity {
         });
     }
 
-    private void updateAssignment(String assignmentName, String assignmentGrade, String assignmentDate) {
+    private void updateAssignment(String assignmentName, String assignmentGrade,long assignmentTimeMil, String assignmentDate) {
         // updating the user via child nodes
         if (!TextUtils.isEmpty(assignmentName))
             mFirebaseDatabase.child(assignmentId).child("assignmentName").setValue(assignmentName);

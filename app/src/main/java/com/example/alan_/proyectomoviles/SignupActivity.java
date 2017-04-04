@@ -7,6 +7,7 @@ package com.example.alan_.proyectomoviles;
         import android.text.TextUtils;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.CheckBox;
         import android.widget.EditText;
         import android.widget.ProgressBar;
         import android.widget.Toast;
@@ -22,6 +23,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private CheckBox inputPermiso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
+        inputPermiso = (CheckBox) findViewById(R.id.permisos);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
@@ -58,6 +61,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+                Boolean permisos = inputPermiso.isChecked();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();

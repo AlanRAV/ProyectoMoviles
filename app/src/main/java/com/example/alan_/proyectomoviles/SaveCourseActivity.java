@@ -104,7 +104,7 @@ public class SaveCourseActivity extends AppCompatActivity {
                 String courseTime = inputTime.getText().toString();
 
                 // Check for already existed userId
-                deleteCourse(courseTitle, courseDay, courseTime);
+                deleteCourse(courseTitle);
 
             }
         });
@@ -233,14 +233,11 @@ public class SaveCourseActivity extends AppCompatActivity {
 
     }
 
-    private  void deleteCourse (String courseTittle, String courseDay, String courseTime){
+    private  void deleteCourse (String courseTittle){
             // updating the user via child nodes
             if (!TextUtils.isEmpty(courseTittle))
                 mFirebaseDatabase.child(courseId).child("courseTittle").setValue(null);
-
-            if (!TextUtils.isEmpty(courseDay))
                 mFirebaseDatabase.child(courseId).child("courseDay").setValue(null);
-            if (!TextUtils.isEmpty(courseTime))
                 mFirebaseDatabase.child(courseId).child("courseTime").setValue(null);
 
 

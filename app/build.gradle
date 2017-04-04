@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.alan_.proyectomoviles"
-        minSdkVersion 15
+        minSdkVersion 24
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -30,6 +30,7 @@ dependencies {
 
     compile 'com.google.firebase:firebase-database:9.6.1'
     compile "com.google.firebase:firebase-auth:9.6.1"
+    compile 'com.roomorama:caldroid:2.2.1'
 
 }
 apply plugin: 'com.google.gms.google-services'
