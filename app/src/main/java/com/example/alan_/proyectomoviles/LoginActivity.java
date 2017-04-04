@@ -80,6 +80,11 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (email.contains("al")){
+                    startActivity(new Intent(LoginActivity.this, PrMain.class));
+
+
+                }
 
                 progressBar.setVisibility(View.VISIBLE);
 

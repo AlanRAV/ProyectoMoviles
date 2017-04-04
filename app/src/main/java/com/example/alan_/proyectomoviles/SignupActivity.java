@@ -16,6 +16,8 @@ package com.example.alan_.proyectomoviles;
         import com.google.android.gms.tasks.Task;
         import com.google.firebase.auth.AuthResult;
         import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -24,6 +26,9 @@ public class SignupActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private FirebaseAuth auth;
     private CheckBox inputPermiso;
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,10 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         //Get Firebase auth instance
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+
+        // get reference to 'courses' node
+        mFirebaseDatabase = mFirebaseInstance.getReference("users");
         auth = FirebaseAuth.getInstance();
 
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
@@ -61,10 +70,22 @@ public class SignupActivity extends AppCompatActivity {
 
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
-                Boolean permisos = inputPermiso.isChecked();
+                Boolean permisos;
+                if (inputPermiso.isChecked()){
+                    permisos = true;
+                    Toast.makeText(getApplicationContext(), permisos.toString(), Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    permisos = false;
+                    Toast.makeText(getApplicationContext(), permisos.toString(), Toast.LENGTH_SHORT).show();
+
+                }
+
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
 
@@ -78,8 +99,16 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (email.contains("al")){
+                    startActivity(new Intent(SignupActivity.this, PrMain.class));
+
+
+                }
+
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
+
+
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -98,6 +127,17 @@ public class SignupActivity extends AppCompatActivity {
                                 }
                             }
                         });
+               // userId = auth.getCurrentUser().getUid();
+
+                User user = new User(email, password, permisos);
+                userId = mFirebaseDatabase.push().getKey();
+                mFirebaseDatabase.child(userId).setValue(user);
+                
+
+
+                 mFirebaseDatabase.child(userId).setValue(auth.getCurrentUser().getUid());
+                //mFirebaseDatabase.child("permiso").setValue(permisos);
+
 
             }
         });
@@ -108,4 +148,6 @@ public class SignupActivity extends AppCompatActivity {
         super.onResume();
         progressBar.setVisibility(View.GONE);
     }
+
+
 }
