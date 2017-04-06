@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Juan Javier del Rio Garcia"
+            android:ems="10"
+            android:layout_marginTop="11dp"
+            android:id="@+id/editText4" />
+
+        <Button
+            android:text="+"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:layout_width="40dp"
+            android:layout_alignTop="@+id/editText4"
+            android:layout_toEndOf="@+id/editText4"
+            android:layout_marginStart="11dp" />
+
+        <Button
+            android:text="-"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:layout_alignBaseline="@+id/button"
+            android:layout_alignBottom="@+id/button"
+            android:layout_toEndOf="@+id/button"
+            android:layout_marginStart="11dp" />
+    </RelativeLayout>
+
+
+
+
+
