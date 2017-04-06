@@ -51,6 +51,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
+
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.addgroup, null);
@@ -84,7 +85,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                 //do something
                 temp=listItemText.getText().toString();
 
-                list.add(temp);
+
+                list.add(1,temp);
                 notifyDataSetChanged();
             }
         });

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity  {
         ArrayList<String> list = new ArrayList<String>();
         list.add("");
 
+
         //instantiate custom adapter
         MyCustomAdapter adapter = new MyCustomAdapter(list, this);
 
