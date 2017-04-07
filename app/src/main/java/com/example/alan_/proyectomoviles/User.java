@@ -7,8 +7,9 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
 
-    public String name;
+    //public String name;
     public String email;
+    public String password;
     public boolean permiso;
 
     // Default constructor required for calls to
@@ -16,9 +17,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, boolean permiso) {
-        this.name = name;
+    public User(String email, String password, boolean permiso) {
         this.email = email;
+        this.password = password;
         this.permiso = permiso;
     }
 }

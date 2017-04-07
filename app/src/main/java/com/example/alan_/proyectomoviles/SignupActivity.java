@@ -16,6 +16,7 @@ package com.example.alan_.proyectomoviles;
         import com.google.android.gms.tasks.Task;
         import com.google.firebase.auth.AuthResult;
         import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.auth.FirebaseUser;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,6 +29,7 @@ public class SignupActivity extends AppCompatActivity {
     private CheckBox inputPermiso;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
+  // private String mUserId;
     private String userId;
 
     @Override
@@ -99,9 +101,13 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (email.contains("al")){
+                if (permisos){
                     startActivity(new Intent(SignupActivity.this, PrMain.class));
 
+
+                }
+                if (!permisos){
+                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
 
                 }
 
@@ -122,20 +128,21 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                    //startActivity(new Intent(SignupActivity.this, MainActivity.class));
+
                                     finish();
                                 }
                             }
                         });
                // userId = auth.getCurrentUser().getUid();
-
+             //   mUserId = mFirebaseUser.getToken(true).toString();
                 User user = new User(email, password, permisos);
                 userId = mFirebaseDatabase.push().getKey();
                 mFirebaseDatabase.child(userId).setValue(user);
-                
 
 
-                 mFirebaseDatabase.child(userId).setValue(auth.getCurrentUser().getUid());
+
+                 //mFirebaseDatabase.child(userId).setValue(auth.getCurrentUser().getUid());
                 //mFirebaseDatabase.child("permiso").setValue(permisos);
 
 
