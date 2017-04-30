@@ -49,22 +49,22 @@
         android:id="@+id/asistencia_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:adjustViewBounds="true"
-        android:scaleType="none"
-        app:srcCompat="@drawable/checbox"
-        android:layout_below="@+id/textView3"
         android:layout_alignEnd="@+id/textView4"
-        android:layout_marginTop="20dp" />
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/checbox" />
 
     <ImageButton
         android:id="@+id/calificaciones_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="none"
-        app:srcCompat="@drawable/calificacion"
         android:layout_alignTop="@+id/asistencia_button"
+        android:layout_marginStart="25dp"
         android:layout_toEndOf="@+id/asistencia_button"
-        android:layout_marginStart="25dp" />
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/calificacion" />
 
     <ImageButton
         android:id="@+id/grupo_button"
@@ -73,19 +73,19 @@
         android:layout_alignTop="@+id/calificaciones_button"
         android:layout_marginStart="32dp"
         android:layout_toEndOf="@+id/calificaciones_button"
-        android:scaleType="none"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/addgroup" />
 
     <ImageButton
         android:id="@+id/actividades_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_below="@+id/asistencia_button"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:scaleType="none"
-        app:srcCompat="@drawable/actividad"
-        android:layout_below="@+id/asistencia_button"
-        android:layout_toEndOf="@+id/imageView2" />
+        android:layout_toEndOf="@+id/imageView2"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/actividad" />
 
     <ImageButton
         android:id="@+id/comentarios_button"
@@ -94,7 +94,7 @@
         android:layout_alignTop="@+id/actividades_button"
         android:layout_marginStart="42dp"
         android:layout_toEndOf="@+id/actividades_button"
-        android:scaleType="none"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/comentario" />
 
 </RelativeLayout>

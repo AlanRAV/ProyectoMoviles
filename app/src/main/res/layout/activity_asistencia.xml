@@ -10,47 +10,72 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.alan_.proyectomoviles.Asistencia">
 
-
-    <TextView
-        android:text="Juan Javie del Rio Garcia"
+    <Button
+        android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="127dp"
-        android:id="@+id/textView5"
+        android:layout_above="@+id/textViewLetra"
+        android:layout_centerHorizontal="true"
+        android:text="Search" />
+
+    <EditText
+        android:id="@+id/textViewLetra"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/alumnosv"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/textViewGrado"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textViewGrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtGrupoLetter"
+        android:layout_alignBottom="@+id/txtGrupoLetter"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/txtGrupoLetter"
+        android:text="Grado"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="42dp" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:id="@+id/checkBox"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true" />
+        android:textSize="18sp" />
 
     <TextView
-        android:text="5 B"
+        android:text="Grupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/checkBox"
-        android:layout_alignStart="@+id/textView5"
-        android:layout_marginBottom="12dp"
-        android:id="@+id/textView6"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_alignLeft="@+id/textView5" />
+        android:id="@+id/textViewLetra"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/txtGrupoLetter"
+        android:layout_alignBottom="@+id/txtGrupoLetter"
+        android:layout_alignEnd="@+id/buttonSaveAssistency" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textViewLetra"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="31dp"
+        android:id="@+id/txtGrupoLetter"
+        android:layout_width="50dp" />
+
+
+    <ListView
+        android:id="@+id/alumnosv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txtGrupoLetter"
+        android:layout_alignStart="@+id/textViewLetra" />
 
     <Button
-        android:text="Guardar"
+        android:id="@+id/buttonSaveAssistency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Save"
+        android:layout_above="@+id/textViewGrado"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

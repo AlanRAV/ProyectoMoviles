@@ -32,7 +32,7 @@ public class PrMain extends AppCompatActivity {
         btnCalificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PrMain.this, Asistencia.class));
+                startActivity(new Intent(PrMain.this, AssignmentActivity.class));
             }
         });
 
@@ -46,7 +46,7 @@ public class PrMain extends AppCompatActivity {
         btnActividades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PrMain.this, actividades.class));
+                startActivity(new Intent(PrMain.this, calendariop.class));
             }
         });
 

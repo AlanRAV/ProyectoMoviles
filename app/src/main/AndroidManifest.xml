@@ -23,6 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".calendariop" />
+        <activity android:name=".Calificaciones" />
+
 
         <activity android:name=".actividades" />
         <activity android:name=".AddGroup" />

@@ -52,11 +52,6 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/btn_saveAssignment"
@@ -68,6 +63,7 @@
             android:text="@string/action_saveAssignment"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
+
 
     </LinearLayout>
 

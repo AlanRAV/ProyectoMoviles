@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class AssignmentActivity extends AppCompatActivity {
+public class Calificaciones extends AppCompatActivity {
 
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -30,11 +30,11 @@ public class AssignmentActivity extends AppCompatActivity {
     private Button dltAssignment;
 
 
-    int assignmentid = 1;
+
     //  private String userId;
     //private String courseId;
     private  String assignmentId;
- //   private  String courseId;
+    //   private  String courseId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,18 +93,17 @@ public class AssignmentActivity extends AppCompatActivity {
                 String assignmentGrade = inputAssGrade.getText().toString();
                 long assignmentTimeMil = 0;
                 String assignmentDate = null;
-                assignmentId = 1+"";
 
                 // Check for already existed userId
                 if (TextUtils.isEmpty(assignmentId)) {
-                    createAssignment(assignmentName, assignmentGrade, assignmentDate );
+                    createAssignment(assignmentName, assignmentGrade, assignmentTimeMil, assignmentDate );
                 } else {
-                    updateAssignment(assignmentName, assignmentGrade, assignmentDate);
+                    updateAssignment(assignmentName, assignmentGrade, assignmentTimeMil, assignmentDate);
                 }
             }
         });
 
-       /* dltAssignment.setOnClickListener(new View.OnClickListener() {
+        dltAssignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String assignmentName = inputAssName.getText().toString();
@@ -118,7 +117,6 @@ public class AssignmentActivity extends AppCompatActivity {
         });
 
         toggleButton();
-        */
     }
 
     // Changing button text
@@ -131,37 +129,32 @@ public class AssignmentActivity extends AppCompatActivity {
     }
 
 
-   /* private void createCourse(String courseTittle, String courseDay, String courseTime) {
+    /* private void createCourse(String courseTittle, String courseDay, String courseTime) {
+         // TODO
+         // In real apps this userId should be fetched
+         // by implementing firebase auth
+         if (TextUtils.isEmpty(courseId)) {
+             courseId = mFirebaseDatabase.push().getKey();
+         }
+
+         Course course = new Course(courseTittle, courseDay, courseTime);
+
+         mFirebaseDatabase.child(courseId).setValue(course);
+
+         addCourseChangeListener();
+     }
+ */
+    private void createAssignment(String assignmentName, String assignmentGrade, long assignmentTimeMil, String assignmentDate) {
         // TODO
         // In real apps this userId should be fetched
         // by implementing firebase auth
-        if (TextUtils.isEmpty(courseId)) {
-            courseId = mFirebaseDatabase.push().getKey();
-        }
-
-        Course course = new Course(courseTittle, courseDay, courseTime);
-
-        mFirebaseDatabase.child(courseId).setValue(course);
-
-        addCourseChangeListener();
-    }
-*/
-    private void createAssignment(String assignmentName, String assignmentGrade,  String assignmentDate) {
-        // TODO
-        // In real apps this userId should be fetched
-        // by implementing firebase auth
-        assignmentid=1;
         if (TextUtils.isEmpty(assignmentId)) {
-            assignmentId = 1+"";
-
+            assignmentId = mFirebaseDatabase.push().getKey();
         }
 
-        assignmentId = 1+"";
+      //  Assignment assignment = new Assignment(assignmentName, assignmentGrade, assignmentTimeMil, assignmentDate);
 
-
-        Assignment assignment = new Assignment(assignmentName, assignmentGrade, assignmentDate);
-
-        mFirebaseDatabase.child(assignmentId).setValue(assignment);
+       // mFirebaseDatabase.child(assignmentId).setValue(assignment);
 
         addAssignmentChangeListener();
     }
@@ -170,7 +163,6 @@ public class AssignmentActivity extends AppCompatActivity {
      * User data change listener
      */
     private void addAssignmentChangeListener() {
-        assignmentid =1;
         // User data change listener
         mFirebaseDatabase.child(assignmentId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -205,14 +197,14 @@ public class AssignmentActivity extends AppCompatActivity {
         });
     }
 
-    private void updateAssignment(String assignmentName, String assignmentGrade,String assignmentDate) {
+    private void updateAssignment(String assignmentName, String assignmentGrade,long assignmentTimeMil, String assignmentDate) {
         // updating the user via child nodes
-       // if (!TextUtils.isEmpty(assignmentName))
+        if (!TextUtils.isEmpty(assignmentName))
             mFirebaseDatabase.child(assignmentId).child("assignmentName").setValue(assignmentName);
 
-        //if (!TextUtils.isEmpty(assignmentGrade))
+        if (!TextUtils.isEmpty(assignmentGrade))
             mFirebaseDatabase.child(assignmentId).child("assignmentGrade").setValue(assignmentGrade);
-        //if (!TextUtils.isEmpty(assignmentDate))
+        if (!TextUtils.isEmpty(assignmentDate))
             mFirebaseDatabase.child(assignmentId).child("assignmentDueDate").setValue(assignmentDate);
 
 

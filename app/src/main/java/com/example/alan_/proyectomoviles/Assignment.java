@@ -21,7 +21,7 @@ public class Assignment {
     public Assignment() {
     }
 
-    public Assignment(String assignmentName, String assignmentGrade, Long assignmentTimeMil, String assignmentDate) {
+    public Assignment(String assignmentName, String assignmentGrade,  String assignmentDate) {
         this.assignmentName = assignmentName;
         this.assignmentGrade = assignmentGrade;
         this.assignmentTimeMil = assignmentTimeMil;
