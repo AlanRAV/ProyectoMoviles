@@ -7,11 +7,13 @@ package com.example.alan_.proyectomoviles;
         import android.os.Bundle;
         import android.support.v7.app.ActionBar;
         import android.support.v7.app.AppCompatActivity;
+        import android.widget.ListView;
         import android.widget.Toast;
 
         import com.github.sundeepk.compactcalendarview.CompactCalendarView;
         import com.github.sundeepk.compactcalendarview.domain.Event;
 
+        import java.util.ArrayList;
         import java.util.Date;
         import java.util.Locale;
 
@@ -94,6 +96,14 @@ public class calendariop extends AppCompatActivity {
                 actionbar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
             }
         });
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("");
+        CaldroidAdapter adapter = new CaldroidAdapter(list, this);
+
+        //handle listview and assign adapter
+        ListView lView = (ListView)findViewById(R.id.post);
+        lView.setAdapter(adapter);
     }
+
 }
 
