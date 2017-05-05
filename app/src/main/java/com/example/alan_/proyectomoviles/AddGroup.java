@@ -171,7 +171,7 @@ public class AddGroup extends AppCompatActivity {
      */
     private void addCourseChangeListener() {
         // User data change listener
-        mFirebaseDatabase//.child(groupId)
+        mFirebaseDatabase//.child(groupId),
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

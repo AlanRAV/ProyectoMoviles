@@ -25,26 +25,21 @@
         </activity>
         <activity android:name=".calendariop" />
         <activity android:name=".Calificaciones" />
-
-
         <activity android:name=".actividades" />
         <activity android:name=".AddGroup" />
         <activity android:name=".Asistencia" />
         <activity android:name=".PrMain" />
-
         <activity android:name=".AssignmentActivity" />
         <activity android:name=".SaveCourseActivity" />
-
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-
-
-    <activity
+        <activity
             android:name=".SignupActivity"
             android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ResetPasswordActivity"></activity>
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".comentarios"></activity>
     </application>
 
 </manifest>
